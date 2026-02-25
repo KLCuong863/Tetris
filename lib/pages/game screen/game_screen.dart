@@ -31,10 +31,10 @@ class GameScreenState extends State<GameScreen> {
   Timer? _dasTimer;
 
   /// Ngưỡng pixel để bắt đầu nhận ra gesture (tránh nhầm tap)
-  static const double _swipeThreshold = 12.0;
+  static const double _swipeThreshold = 8.0;
 
   /// px/ms — trên ngưỡng này = vuốt nhanh (1 ô), dưới = kéo (liên tục)
-  static const double _fastSwipeSpeed = 0.6;
+  static const double _fastSwipeSpeed = 1.2;
 
   /// Thời gian giữ ngón tay yên trước khi kích hoạt soft drop
   static const int _holdDelayMs = 180;
