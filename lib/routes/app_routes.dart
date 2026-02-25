@@ -23,6 +23,14 @@ class AppRoute{
       name: 'InGame_Page',
       path: '/ingame'
   );
+  static const highscore = AppRouteInfo(
+      name: 'HighScore Page',
+      path: '/highscore_page'
+  );
+  static const setting = AppRouteInfo(
+      name: 'Setting_Page',
+      path: '/setting_page'
+  );
 
-  static List<AppRouteInfo> get all => [splash, home, ingame];
+  static List<AppRouteInfo> get all => [splash, home, ingame, highscore, setting];
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tetris_flame/pages/game%20screen/game_screen.dart';
+import 'package:tetris_flame/pages/highscore%20page/highscore_page.dart';
+import 'package:tetris_flame/pages/setting%20page/setting_page.dart';
 
 import '../pages/home page/home_page.dart';
 import '../pages/splash_page.dart';
@@ -46,6 +48,30 @@ final GoRouter goRouter = GoRouter(
                   return CustomTransitionPage(
                       key: state.pageKey,
                       child: GameScreen(),
+                      transitionDuration: const Duration(milliseconds: 400),
+                      transitionsBuilder: _slideTransition
+                  );
+                }
+            ),
+            GoRoute(
+                path: AppRoute.setting.path,
+                name: AppRoute.setting.name,
+                pageBuilder: (context, state){
+                  return CustomTransitionPage(
+                      key: state.pageKey,
+                      child: SettingsPage(),
+                      transitionDuration: const Duration(milliseconds: 400),
+                      transitionsBuilder: _slideTransition
+                  );
+                }
+            ),
+            GoRoute(
+                path: AppRoute.highscore.path,
+                name: AppRoute.highscore.name,
+                pageBuilder: (context, state){
+                  return CustomTransitionPage(
+                      key: state.pageKey,
+                      child: HighScorePage(),
                       transitionDuration: const Duration(milliseconds: 400),
                       transitionsBuilder: _slideTransition
                   );

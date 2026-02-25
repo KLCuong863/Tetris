@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tetris_flame/routes/app_routes.dart';
 import 'package:tetris_flame/utils/colors.dart';
@@ -91,6 +92,7 @@ class HomeState extends State<HomePage> {
               controller: highscore,
               color: AppColors.pieceO,
               icon: Icons.emoji_events_outlined,
+              onTap: (){context.push(AppRoute.highscore.path);}
             ),
 
             const SizedBox(height: 20),
@@ -99,6 +101,7 @@ class HomeState extends State<HomePage> {
               controller: settings,
               color: AppColors.pieceT,
               icon: Icons.settings,
+              onTap: (){context.push(AppRoute.setting.path);}
             ),
 
             const SizedBox(height: 20),
@@ -107,6 +110,7 @@ class HomeState extends State<HomePage> {
               controller: exit,
               color: AppColors.pieceL,
               icon: Icons.logout,
+              onTap: (){SystemNavigator.pop();}
             ),
           ],
         ),

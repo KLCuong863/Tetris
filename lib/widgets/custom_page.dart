@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import '../routes/app_routes.dart';
 import '../utils/colors.dart';
@@ -28,6 +29,15 @@ class CustomPage extends StatefulWidget{
 }
 
 class _CustomPageState extends State<CustomPage>{
+
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.immersiveSticky,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tetris_flame/game/piece.dart';
 
+import '../manager/score_manager.dart';
 import '../utils/colors.dart';
 import 'board.dart';
 
@@ -96,6 +97,8 @@ class TetrisGame extends FlameGame with KeyboardEvents, ChangeNotifier{
       } else if (event.logicalKey ==
           LogicalKeyboardKey.arrowUp) {
         _rotatePiece();
+      } else if (event.logicalKey == LogicalKeyboardKey.keyP) {
+        togglePause();
       }
     }
 
@@ -119,7 +122,8 @@ class TetrisGame extends FlameGame with KeyboardEvents, ChangeNotifier{
       overlays.remove('Pause');
     }
   }
-  void resetGame() {
+  void resetGame() async{
+    await ScoreManager.saveHighScore(score);
     score = 0;
     totalLines = 0;
     level = 1;
@@ -403,5 +407,44 @@ class TetrisGame extends FlameGame with KeyboardEvents, ChangeNotifier{
       }
     }
   }
+
+  /// MOBILE CONTROLS FUNC
+  void moveLeftMobile() {
+    if (isPaused || isGameOver) return;
+    _movePiece(-1);
+  }
+
+  void moveRightMobile() {
+    if (isPaused || isGameOver) return;
+    _movePiece(1);
+  }
+
+  void moveDownMobile() {
+    if (isPaused || isGameOver) return;
+
+
+    _movePieceDown();
+  }
+
+  void hardDropMobile() {
+    if (isPaused || isGameOver) return;
+
+    _hardDrop();
+  }
+
+  void rotateMobile() {
+    if (isPaused || isGameOver) return;
+
+    _rotatePiece();
+  }
+  void startSoftDrop() {
+    if (isPaused || isGameOver) return;
+    isSoftDropping = true;
+  }
+
+  void stopSoftDrop() {
+    isSoftDropping = false;
+  }
+
 }
 
